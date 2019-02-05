@@ -1,0 +1,195 @@
+Open Source Operating Systems
+[Mid-Term Hands On Skills]
+
+Author: Nick Williams
+Date: 2/4/2019
+Os: CentOs
+
+
+[1]List All files including hidden files in a directory
+
+ls -a < path/to/directory>
+
+
+
+
+[2]List files by size, and show files in MB/KB
+
+ls -Shal <path/to/directory>
+
+-S: sort files by size
+-h: make files human readable (KB,MB)
+-a: Show all files
+-l: make output long listing
+
+
+
+[3]Create a nested directory with one command
+
+mkdir -p ancestor/grandParent/parent/child
+
+p : Use when creating a nested directory
+
+
+
+
+[4]Change into a directory
+
+cd < ~/Downloads/ >
+
+Means: (c)hange (d)irectory into ~ (/home/student/Downloads)
+
+
+
+[5]Show the present working directory
+
+pwd
+
+
+
+[6]Change the name of a directory
+
+mv < <path/to/directoryToChange> <newDirectoryName> >
+
+The move command will effectivly change the name of a directory
+
+
+
+
+[7]Create an empty file
+
+touch <nameOfFile>
+
+creates a 0byte file
+
+
+
+
+
+[8]Redirect IO from an ls command to a file and append more data to the file
+
+
+ls -Shal /usr/bin > binContents.txt
+
+
+-Will output results of ls command to a file called binContents.txt
+
+
+
+echo "Now I'm appending some more data to the file" >> binContents.txt
+
+-Using the >> will ensure that we do not wipe all previous data and append to end of file.
+
+
+
+
+
+[9]View the content of a file
+
+
+cat <path/to/file <filename>>
+
+
+
+[10]Copy a file to another directory
+
+
+cp binContents /tmp 
+
+
+Will copy a file called binContents from our pwd into /temp.
+
+
+
+
+[11]Delete one deeply nested file
+
+1.) First lets create a deep directory structure:
+	mkdir -p a/b/c/d/e/f/g/h/i/j
+
+2.) Next, lets move our binContents file from /tmp int /g
+
+        mv /tmp/binContents ~/Mid_Term/a/b/c/d/e/f/g 
+
+3.) Now to get rid of the file:
+
+	rm /a/b/c/d/e/f/g/binContents
+
+Poof.
+
+ 
+
+
+[12]Find a file
+
+
+find <path/to/file/filename>
+
+Or if you have updated the mlocate db (updatedb)
+
+You can try locate <filename> 
+
+
+
+
+[13] Add a directory to your path and make it part of your environment
+[Also, echo env variables]
+
+1.) echo $PATH > mypath.txt (Now we can open in Nano)
+
+2.) nano mypath.txt and add /home/student/Mid_Term:<the rest of the PATH>
+
+3.) In front of the new PATH add export PATH=<new PATH>. Cntr-x and save the file.
+
+4.) Now we can [ cat mypath.txt >> ~/.bashrc ] write the contents of file to .bashrc
+
+5.) Once we log out and log back in our new path will be persistant.
+
+6.) To verify and view our environment variable enter [ env ]
+
+
+[14]Search for a string in a file
+
+
+grep mimsy ~/mimsyfile
+
+
+Reads: "Search for the string mimsy inside of /home/student/mimsyfile" 
+
+
+
+
+[15]Create an alias
+
+alias fscript='nano getFlag.py'
+
+creates a command [ fscript ] which now creates a new python
+file called getFlag.py and opens it in nano.
+
+
+
+[15]Put alias somewhere it will persist
+
+
+1.) nano ~/.bashrc
+
+2.) at the bottom of the page enter [alias fscript='nano getFlag.py']
+
+3.) Save and exit nano. Log out and back in.
+
+4.) [alias] to show that you have new alias [env] to show that its persistant.
+
+
+
+
+[16]Pipe enviroment variables into less
+
+
+env | less
+
+
+
+
+
+
+
